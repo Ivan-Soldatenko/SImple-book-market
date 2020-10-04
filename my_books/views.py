@@ -17,9 +17,8 @@ class BooksView(viewsets.mixins.ListModelMixin,
 	"""
 
 	queryset = Book.objects.all()
-	serializer_class = FullBookSerializer
 
-	def get(self, request, pk=0):
+	def get(self, request, pk):
 		"""
 		List all books if url is 'books/' (<int:pk> == 0)
 		Retrieve a book if url is 'v<int:pk>/books/' (<int:pk> != 0)
