@@ -26,8 +26,8 @@ class BooksView(viewsets.mixins.ListModelMixin,
 
 		if pk==0:
 			return self.list(request)
-		else:
-			return self.retrieve(request, pk)
+	
+		return self.retrieve(request, pk)
 
 	def post(self, request, pk=0):
 		"""
