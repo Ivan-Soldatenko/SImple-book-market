@@ -18,15 +18,18 @@ class BooksView(viewsets.mixins.ListModelMixin,
 
 	queryset = Book.objects.all()
 
+	def list(self, request):
+		"""
+		List all books
+		"""
+		
+		return super().list(request)
+
 	def get(self, request, pk):
 		"""
-		List all books if url is 'books/' (<int:pk> == 0)
-		Retrieve a book if url is 'v<int:pk>/books/' (<int:pk> != 0)
+		Retrieve a book 
 		"""
 
-		if pk==0:
-			return self.list(request)
-	
 		return self.retrieve(request, pk)
 
 	def post(self, request, pk=0):
