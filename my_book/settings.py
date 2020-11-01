@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     # Django Rest Framework
     'rest_framework',
 
+    # Django Filters
+    'django_filters',
+
      # My apps
     'my_books',
 ]
@@ -50,6 +53,11 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS':
     'my_books.custompagination.LimitOffsetPaginationWithUpperBound',
     'PAGE_SIZE': 5,
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.OrderingFilter',
+        'rest_framework.filters.SearchFilter',
+        )
 }
 
 MIDDLEWARE = [

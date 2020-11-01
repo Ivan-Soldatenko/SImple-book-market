@@ -20,6 +20,18 @@ class BooksView(viewsets.mixins.ListModelMixin,
 
 	queryset = Book.objects.all()
 
+	filter_fields = (
+			'title',
+			'author_name',
+		)
+	search_fields = (
+			'title',
+			'author_name',
+		)
+	ordering_fields = (
+			'title',
+		)
+
 	def get_serializer_class(self):
 		"""
 		Override method for selecting correct serializer:
