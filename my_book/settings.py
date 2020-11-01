@@ -45,9 +45,6 @@ INSTALLED_APPS = [
     # Django Filters
     'django_filters',
 
-    # Token Authentication
-    'rest_framework.authtoken',
-
     # My apps
     'my_books',
 ]
@@ -60,6 +57,14 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',
         'rest_framework.filters.OrderingFilter',
         'rest_framework.filters.SearchFilter',
+        ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        ),
+    'DEFAULT_PERMISSION_CLASSES':(
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        'my_books.custompermission.IsAdminUserOrReadOnly',
         ),
     'DEFAULT_THROTTLE_CLASSES':(
         'rest_framework.throttling.AnonRateThrottle',
