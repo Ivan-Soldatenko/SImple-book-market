@@ -46,6 +46,12 @@ INSTALLED_APPS = [
     'my_books',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS':
+    'my_books.custompagination.LimitOffsetPaginationWithUpperBound',
+    'PAGE_SIZE': 5,
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
