@@ -10,6 +10,8 @@ from my_books.serializers import ShortBookSerializer, FullBookSerializer
 class BooksView(viewsets.mixins.ListModelMixin,
 				viewsets.mixins.CreateModelMixin,
 				viewsets.mixins.RetrieveModelMixin,
+				viewsets.mixins.UpdateModelMixin,
+				viewsets.mixins.DestroyModelMixin,
 				viewsets.GenericViewSet):
 	"""
 	List all books with short information about their.
@@ -17,27 +19,7 @@ class BooksView(viewsets.mixins.ListModelMixin,
 	"""
 
 	queryset = Book.objects.all()
-
-	def list(self, request):
-		"""
-		List all books
-		"""
-		
-		return super().list(request)
-
-	def get(self, request, pk):
-		"""
-		Retrieve a book 
-		"""
-
-		return self.retrieve(request, pk)
-
-	def post(self, request, pk=0):
-		"""
-		Create a new book's model
-		"""
-
-		return self.create(request)
+	
 
 	def get_serializer_class(self):
 		"""

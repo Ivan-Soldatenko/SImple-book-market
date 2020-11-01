@@ -31,9 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-     # My apps
-    'my_books',
-
     # Default django apps.
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,7 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework'
+
+    # Django Rest Framework
+    'rest_framework',
+
+     # My apps
+    'my_books',
 ]
 
 MIDDLEWARE = [
@@ -81,9 +83,9 @@ WSGI_APPLICATION = 'my_book.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'my_book',
+        'NAME': 'books',
         'USER': 'postgres',
-        'PASSWORD': 'password',
+        'PASSWORD': '1234554321F',
         'HOST': 'localhost',
         'PORT': '5432',
     }
