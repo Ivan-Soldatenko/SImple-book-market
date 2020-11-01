@@ -45,7 +45,10 @@ INSTALLED_APPS = [
     # Django Filters
     'django_filters',
 
-     # My apps
+    # Token Authentication
+    'rest_framework.authtoken',
+
+    # My apps
     'my_books',
 ]
 
@@ -57,7 +60,15 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',
         'rest_framework.filters.OrderingFilter',
         'rest_framework.filters.SearchFilter',
-        )
+        ),
+    'DEFAULT_THROTTLE_CLASSES':(
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+        ),
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '4/minute',
+        'user': '7/minute',
+        },
 }
 
 MIDDLEWARE = [
