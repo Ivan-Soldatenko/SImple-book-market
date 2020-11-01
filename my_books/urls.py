@@ -1,13 +1,13 @@
 """Defines URL patterns for my_books app"""
 
 from django.urls import path
+from rest_framework.routers import SimpleRouter
 
-from my_books.views import BooksView
+from my_books import views
 
-app_name = 'my_books'
-urlpatterns = [
-	# Page for viewing all books with short information about their (without description)
-	path('books/', BooksView.as_view({'get': 'list', 'post': 'create'})),
-	# Page for viewing a book with full information about it (with descriprion)
-	path('books/<int:pk>/', BooksView.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}))
-]
+app_name = "my_books"
+
+router = SimpleRouter()
+router.register('books', views.BooksView)
+
+urlpatterns = router.urls
