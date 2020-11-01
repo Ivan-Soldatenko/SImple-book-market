@@ -19,7 +19,6 @@ class BooksView(viewsets.mixins.ListModelMixin,
 	"""
 
 	queryset = Book.objects.all()
-	
 
 	def get_serializer_class(self):
 		"""
