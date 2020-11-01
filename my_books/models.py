@@ -6,9 +6,12 @@ class Book(models.Model):
 	The book the user wants to know about
 	"""
 
-	title = models.CharField(max_length=50)
-	author_name = models.CharField(max_length=50)
-	description = models.TextField()
+	title = models.CharField(max_length=50, blank=False)
+	author_name = models.CharField(max_length=50, default='unknown author')
+	description = models.TextField(blank=False)
+
+	class Meta:
+		ordering = ('title', )
 
 	def __str__(self):
 		"""
