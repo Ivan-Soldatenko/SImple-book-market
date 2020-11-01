@@ -6,7 +6,7 @@ class Book(models.Model):
 	The book the user wants to know about
 	"""
 
-	title = models.CharField(max_length=50, blank=False)
+	title = models.CharField(max_length=50, blank=False, unique=True)
 	author_name = models.CharField(max_length=50, default='unknown author')
 	description = models.TextField(blank=False)
 
