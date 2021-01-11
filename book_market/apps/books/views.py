@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
 from apps.books.models import Book
-from apps.books.serializers import FullBookSerializer, ShortBookSerializer
+from apps.books.serializers import BookPostSerializer, BookSerializer
 
 
 class BooksView(
@@ -31,6 +31,6 @@ class BooksView(
 		"""
 
         if hasattr(self, "action") and self.action == "list":
-            return ShortBookSerializer
+            return BookSerializer
 
-        return FullBookSerializer
+        return BookPostSerializer

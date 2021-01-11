@@ -1,23 +1,67 @@
 from rest_framework import serializers
 
-from apps.books.models import Book
+from apps.books.models import Book, Author, Genre
 
 
-class ShortBookSerializer(serializers.ModelSerializer):
+class AuthorSerializer(serializers.ModelSerializer):
+    """Serializer for author model"""
+
+    class Meta:
+        model = Author
+        fields = (
+            "id",
+            "first_name",
+            "last_name",
+            "born_year",
+            "country",
+            "bio",
+        )
+
+
+class GenreSerializer(serializers.ModelSerializer):
+    """Serializer for genre model"""
+
+    class Meta:
+        model = Genre
+        fields = (
+            "id",
+            "name",
+            "description",
+        )
+
+
+class BookSerializer(serializers.ModelSerializer):
     """
 	Serializer for representing books with short information
 	"""
 
+    author = AuthorSerializer(read_only=True)
+    genre = GenreSerializer(read_only=True)
+
     class Meta:
         model = Book
-        exclude = ["description"]
+        fields = (
+            "id",
+            "title",
+            "genre",
+            "author",
+            "publish_date",
+            "description",
+        )
 
 
-class FullBookSerializer(serializers.ModelSerializer):
+class BookPostSerializer(serializers.ModelSerializer):
     """
 	Serializer for representing books with full information
 	"""
 
     class Meta:
         model = Book
-        fields = ["id", "title", "author_name", "description"]
+        fields = (
+            "id",
+            "title",
+            "genre",
+            "author",
+            "publish_date",
+            "description",
+        )
