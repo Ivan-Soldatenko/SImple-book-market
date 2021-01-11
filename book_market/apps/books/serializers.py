@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from book_market.apps.books.models import Book
+from apps.books.models import Book
 
 
 class ShortBookSerializer(serializers.ModelSerializer):
