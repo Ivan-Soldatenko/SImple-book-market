@@ -1,10 +1,10 @@
-"""Defines URL patterns for my_books app"""
+"""Defines URL patterns for books app"""
 
 from django.urls import path
 from rest_framework.routers import SimpleRouter
-from my_books import views
+from books import views
 
-app_name = "my_books"
+app_name = "books"
 router = SimpleRouter()
 router.register('books', views.BooksView)
 

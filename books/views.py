@@ -3,8 +3,8 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import viewsets
 
-from my_books.models import Book
-from my_books.serializers import ShortBookSerializer, FullBookSerializer
+from books.models import Book
+from books.serializers import ShortBookSerializer, FullBookSerializer
 
 
 class BooksView(viewsets.mixins.ListModelMixin,
