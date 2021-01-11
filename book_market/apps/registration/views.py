@@ -1,10 +1,9 @@
-from rest_framework import viewsets
 from django.contrib.auth.models import User
-from rest_framework.response import Response
-from rest_framework import status
 
 from apps.registration.models import UserProfile
-from apps.registration.serializers import UserSerializer, UserProfileSerializer
+from apps.registration.serializers import UserProfileSerializer, UserSerializer
+from rest_framework import status, viewsets
+from rest_framework.response import Response
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
@@ -41,9 +40,7 @@ class SignUpView(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
 
-        data = {
-            "information": "You are successfully registered on the book-market API"
-        }
+        data = {"information": "You are successfully registered on the book-market API"}
         return Response(data=data, status=status.HTTP_201_CREATED)
 
     def perform_create(self, serializer):

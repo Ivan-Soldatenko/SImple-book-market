@@ -1,25 +1,21 @@
 from django.contrib.auth.models import User
-from rest_framework import serializers
 from django.contrib.auth.password_validation import validate_password
-from rest_framework.validators import UniqueValidator
 
 from apps.registration.models import UserProfile
+from rest_framework import serializers
+from rest_framework.validators import UniqueValidator
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
     """Serializer for UserProfile model"""
 
-    user = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field="username")
+    user = serializers.SlugRelatedField(
+        queryset=User.objects.all(), slug_field="username"
+    )
 
     class Meta:
         model = UserProfile
-        fields = (
-            "id",
-            "user",
-            "is_valid",
-            "information",
-            "date_joined",
-        )
+        fields = ("id", "user", "is_valid", "information", "date_joined")
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -62,8 +58,7 @@ class UserSerializer(serializers.ModelSerializer):
         """Method for creating user instance"""
 
         user = User.objects.create(
-            username=validated_data["username"],
-            email=validated_data["email"],
+            username=validated_data["username"], email=validated_data["email"]
         )
 
         user.set_password(validated_data["password"])
