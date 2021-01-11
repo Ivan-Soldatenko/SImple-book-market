@@ -5,14 +5,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('books', '0004_auto_20201101_2003'),
-    ]
+    dependencies = [("books", "0004_auto_20201101_2003")]
 
     operations = [
         migrations.AlterField(
-            model_name='book',
-            name='author_name',
-            field=models.CharField(blank=True, default='unknown author', max_length=50),
-        ),
+            model_name="book",
+            name="author_name",
+            field=models.CharField(blank=True, default="unknown author", max_length=50),
+        )
     ]
