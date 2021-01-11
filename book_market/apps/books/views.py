@@ -1,9 +1,8 @@
-from rest_framework import viewsets
-
+from apps.books.customfilter import AuthorFilter, BookFilter
 from apps.books.models import Author, Book, Genre
 from apps.books.serializers import (AuthorSerializer, BookPostSerializer,
                                     BookSerializer, GenreSerializer)
-from apps.books.customfilter import AuthorFilter, BookFilter
+from rest_framework import viewsets
 
 
 class BookViewSet(viewsets.ModelViewSet):
@@ -13,7 +12,13 @@ class BookViewSet(viewsets.ModelViewSet):
 
     filterset_class = BookFilter
     search_fields = ("title", "author__first_name", "author__last_name", "genre__name")
-    ordering_fields = ("title", "author__first_name", "author__last_name", "genre__name", "publish_date")
+    ordering_fields = (
+        "title",
+        "author__first_name",
+        "author__last_name",
+        "genre__name",
+        "publish_date",
+    )
 
     def get_serializer_class(self):
         """
@@ -35,8 +40,8 @@ class AuthorViewSet(viewsets.ModelViewSet):
     serializer_class = AuthorSerializer
 
     filterset_class = AuthorFilter
-    search_fields = ("first_name", "last_name", "country",)
-    ordering_fields = ("first_name", "last_name", "born_date",)
+    search_fields = ("first_name", "last_name", "country")
+    ordering_fields = ("first_name", "last_name", "born_date")
 
 
 class GenreViewSet(viewsets.ModelViewSet):
