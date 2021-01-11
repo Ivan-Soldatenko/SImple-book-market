@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django_filters",
     # My apps
     "apps.books",
+    "apps.registration",
 ]
 
 REST_FRAMEWORK = {
@@ -59,15 +60,6 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ),
-    "DEFAULT_PERMISSION_CLASSES": (
-        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
-        "apps.books.custompermission.IsAdminUserOrReadOnly",
-    ),
-    "DEFAULT_THROTTLE_CLASSES": (
-        "rest_framework.throttling.AnonRateThrottle",
-        "rest_framework.throttling.UserRateThrottle",
-    ),
-    "DEFAULT_THROTTLE_RATES": {"anon": "4/minute", "user": "7/minute"},
 }
 
 MIDDLEWARE = [
