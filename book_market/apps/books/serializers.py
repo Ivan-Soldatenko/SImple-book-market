@@ -8,14 +8,7 @@ class AuthorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Author
-        fields = (
-            "id",
-            "first_name",
-            "last_name",
-            "born_year",
-            "country",
-            "bio",
-        )
+        fields = ("id", "first_name", "last_name", "born_year", "country", "bio")
 
 
 class GenreSerializer(serializers.ModelSerializer):
@@ -23,11 +16,7 @@ class GenreSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Genre
-        fields = (
-            "id",
-            "name",
-            "description",
-        )
+        fields = ("id", "name", "description")
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -40,14 +29,7 @@ class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = (
-            "id",
-            "title",
-            "genre",
-            "author",
-            "publish_date",
-            "description",
-        )
+        fields = ("id", "title", "genre", "author", "publish_date", "description")
 
 
 class BookPostSerializer(serializers.ModelSerializer):
@@ -57,11 +39,4 @@ class BookPostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = (
-            "id",
-            "title",
-            "genre",
-            "author",
-            "publish_date",
-            "description",
-        )
+        fields = ("id", "title", "genre", "author", "publish_date", "description")
