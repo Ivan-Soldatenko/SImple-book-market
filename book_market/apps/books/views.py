@@ -1,10 +1,7 @@
-from django.shortcuts import render
-from rest_framework import generics
-from rest_framework.response import Response
 from rest_framework import viewsets
 
-from books.models import Book
-from books.serializers import ShortBookSerializer, FullBookSerializer
+from book_market.books.models import Book
+from book_market.books.serializers import ShortBookSerializer, FullBookSerializer
 
 
 class BooksView(viewsets.mixins.ListModelMixin,

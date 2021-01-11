@@ -1,8 +1,7 @@
 """Defines URL patterns for books app"""
 
-from django.urls import path
 from rest_framework.routers import SimpleRouter
-from books import views
+from book_market.books import views
 
 app_name = "books"
 router = SimpleRouter()
