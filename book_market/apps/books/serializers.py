@@ -19,9 +19,7 @@ class GenreSerializer(serializers.ModelSerializer):
 
 
 class BookSerializer(serializers.ModelSerializer):
-    """
-	Serializer for representing books with short information
-	"""
+    """Serializer for representing book model. Using for GET request"""
 
     author = AuthorSerializer(read_only=True)
     genre = GenreSerializer(read_only=True)
@@ -32,9 +30,7 @@ class BookSerializer(serializers.ModelSerializer):
 
 
 class BookPostSerializer(serializers.ModelSerializer):
-    """
-	Serializer for representing books with full information
-	"""
+    """Serializer for representing book model. Using for POST and PUT request"""
 
     class Meta:
         model = Book
