@@ -17,3 +17,8 @@ Users can login and then only view book's instances. Users can use pagination, f
 * Django
 * Django REST Framework
 * Postgresql
+* Docker
+
+## Installing
+You need _Docker_ to be installed on your computer. Then you need to go to the project's root directory and run following command:
+`docker-compose up --build`
