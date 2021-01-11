@@ -1,8 +1,7 @@
 from rest_framework import viewsets
 
 from apps.books.models import Book
-from apps.books.serializers import (FullBookSerializer,
-                                                ShortBookSerializer)
+from apps.books.serializers import FullBookSerializer, ShortBookSerializer
 
 
 class BooksView(

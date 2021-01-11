@@ -11,8 +11,8 @@ class Author(models.Model):
     bio = models.TextField(blank=True, null=True)
 
     class Meta:
-        unique_together = ('first_name', 'last_name',)
-        ordering = ('last_name', 'first_name',)
+        unique_together = ("first_name", "last_name")
+        ordering = ("last_name", "first_name")
 
     def __str__(self):
         """Return string representation of author's model"""
@@ -20,15 +20,42 @@ class Author(models.Model):
         return f"{self.last_name} {self.first_name}"
 
 
+class Genre(models.Model):
+    """Represent genre instance"""
+
+    name = models.CharField(max_length=100, unique=True)
+    description = models.TextField(blank=True, null=True)
+
+    class Meta:
+        ordering = ("name",)
+
+    def __str__(self):
+        """Return string representation of genre's model"""
+
+        return self.name
+
+
 class Book(models.Model):
     """Represent book instance"""
 
-    title = models.CharField(max_length=50, blank=False, unique=True)
-    author = models.ForeignKey(Author, on_delete=models.SET_NULL, related_name='book', related_query_name='book')
-    description = models.TextField(blank=False)
+    title = models.CharField(max_length=50, unique=True)
+    genre = models.ForeignKey(
+        Genre,
+        on_delete=models.SET_NULL,
+        related_name="book",
+        related_query_name="book"
+    )
+    author = models.ForeignKey(
+        Author,
+        on_delete=models.SET_NULL,
+        related_name="book",
+        related_query_name="book",
+    )
+    publish_date = models.DateTimeField(null=True, blank=True)
+    description = models.TextField(blank=True, null=True)
 
     class Meta:
-        ordering = ("title",)
+        ordering = ("-publish_date", "title")
 
     def __str__(self):
         """Return a string representation of the book's model"""
