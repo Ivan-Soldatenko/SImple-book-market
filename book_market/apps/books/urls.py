@@ -1,7 +1,7 @@
 """Defines URL patterns for books app"""
 
 from rest_framework.routers import SimpleRouter
-from book_market.apps.books import views
+from apps.books import views
 
 app_name = "books"
 router = SimpleRouter()

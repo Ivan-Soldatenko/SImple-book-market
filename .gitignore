@@ -1,3 +1,4 @@
 migrations
 __pycache__
 .idea
+pg_data

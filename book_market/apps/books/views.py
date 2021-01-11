@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
-from book_market.apps.books.models import Book
-from book_market.apps.books.serializers import (FullBookSerializer,
+from apps.books.models import Book
+from apps.books.serializers import (FullBookSerializer,
                                                 ShortBookSerializer)
 
 
