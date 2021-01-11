@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  web:
+    build: ./book_market
+    volumes:
+      - ./book_market:/usr/src/app/book_market/
+    env_file:
+      - ./book_market/env.dev
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    restart: on-failure
+
+  db:
+    image: postgres:13.1-alpine
+    volumes:
+      - ./book_market/pg_data:/var/lib/postgresql/data/
+    env_file:
+      - ./book_market/env.dev
