@@ -6,9 +6,9 @@ class Author(models.Model):
 
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=75)
-    born_year = models.DateTimeField(blank=True, null=True)
-    country = models.CharField(max_length=50, blank=True, null=True)
-    bio = models.TextField(blank=True, null=True)
+    born_year = models.DateTimeField(null=True)
+    country = models.CharField(max_length=50, null=True)
+    bio = models.TextField(null=True)
 
     class Meta:
         unique_together = ("first_name", "last_name")
@@ -24,7 +24,7 @@ class Genre(models.Model):
     """Represent genre instance"""
 
     name = models.CharField(max_length=100, unique=True)
-    description = models.TextField(blank=True, null=True)
+    description = models.TextField(null=True)
 
     class Meta:
         ordering = ("name",)
@@ -53,8 +53,8 @@ class Book(models.Model):
         related_name="book",
         related_query_name="book",
     )
-    publish_date = models.DateTimeField(null=True, blank=True)
-    description = models.TextField(blank=True, null=True)
+    publish_date = models.DateTimeField(null=True)
+    description = models.TextField(null=True)
 
     class Meta:
         ordering = ("-publish_date", "title")
