@@ -5,13 +5,8 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('books', '0006_auto_20201101_2006'),
-    ]
+    dependencies = [("books", "0006_auto_20201101_2006")]
 
     operations = [
-        migrations.AlterModelOptions(
-            name='book',
-            options={'ordering': ('title',)},
-        ),
+        migrations.AlterModelOptions(name="book", options={"ordering": ("title",)})
     ]
