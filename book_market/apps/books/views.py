@@ -1,36 +1,40 @@
 from rest_framework import viewsets
 
-from apps.books.models import Book
-from apps.books.serializers import BookPostSerializer, BookSerializer
+from apps.books.models import Book, Author, Genre
+from apps.books.serializers import BookPostSerializer, BookSerializer, AuthorSerializer, GenreSerializer
 
 
-class BooksView(
-    viewsets.mixins.ListModelMixin,
-    viewsets.mixins.CreateModelMixin,
-    viewsets.mixins.RetrieveModelMixin,
-    viewsets.mixins.UpdateModelMixin,
-    viewsets.mixins.DestroyModelMixin,
-    viewsets.GenericViewSet,
-):
-    """
-	List all books with short information about their.
-	Create a new book's model and retrieve a book with full information about it.
-	"""
+class BookViewSet(viewsets.ModelViewSet):
+    """ViewSet for Book model"""
 
     queryset = Book.objects.all()
 
-    filter_fields = ("title", "author_name")
-    search_fields = ("title", "author_name")
+    filter_fields = ("title",)
+    search_fields = ("title",)
     ordering_fields = ("title",)
 
     def get_serializer_class(self):
         """
-		Override method for selecting correct serializer:
-		list all books - ShortBookSerializer
-		in other cases - FullBookSerializer
-		"""
+        Function return serializer class
+        If action is create or update function returns BookPostSerializer
+        In other cases returns BookSerializer
+        """
 
-        if hasattr(self, "action") and self.action == "list":
-            return BookSerializer
+        if self.action == "create" or self.action == "update":
+            return BookPostSerializer
 
-        return BookPostSerializer
+        return BookSerializer
+
+
+class AuthorViewSet(viewsets.ModelViewSet):
+    """ViewSet for Author model"""
+
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+
+
+class GenreViewSet(viewsets.ModelViewSet):
+    """ViewSet for Genre model"""
+
+    queryset = Genre.objects.all()
+    serializer_class = GenreSerializer

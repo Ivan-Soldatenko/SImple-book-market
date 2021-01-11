@@ -40,10 +40,11 @@ class Book(models.Model):
 
     title = models.CharField(max_length=50, unique=True)
     genre = models.ForeignKey(
-        Genre, on_delete=models.SET_NULL, related_name="book", related_query_name="book"
+        Genre, null=True, on_delete=models.SET_NULL, related_name="book", related_query_name="book"
     )
     author = models.ForeignKey(
         Author,
+        null=True,
         on_delete=models.SET_NULL,
         related_name="book",
         related_query_name="book",

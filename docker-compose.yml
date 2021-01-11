@@ -3,7 +3,7 @@ services:
   web:
     build: ./book_market
     volumes:
-      - ./book_market:/usr/src/app/book_market/
+      - ./book_market:/usr/src/app/
     env_file:
       - ./book_market/env.dev
     ports:
