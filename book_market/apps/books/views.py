@@ -1,10 +1,9 @@
-from rest_framework import viewsets
-
 from apps.books.customfilter import AuthorFilter, BookFilter
 from apps.books.custompermission import IsAdminUserOrReadOnly
 from apps.books.models import Author, Book, Genre
 from apps.books.serializers import (AuthorSerializer, BookPostSerializer,
                                     BookSerializer, GenreSerializer)
+from rest_framework import viewsets
 
 
 class BookViewSet(viewsets.ModelViewSet):
