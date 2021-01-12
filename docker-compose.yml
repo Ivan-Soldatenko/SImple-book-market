@@ -10,6 +10,7 @@ services:
       - 8000:8000
     depends_on:
       - db
+      - redis
     restart: on-failure
 
   db:
@@ -18,3 +19,32 @@ services:
       - ./book_market/pg_data:/var/lib/postgresql/data/
     env_file:
       - ./book_market/env.dev
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+
+  celery:
+    build: ./book_market
+    volumes:
+      - ./book_market:/usr/src/app/
+    entrypoint: celery -A core worker -l info
+    env_file:
+      - ./book_market/env.dev
+    depends_on:
+      - db
+      - redis
+    restart: on-failure
+
+  celery-beat:
+    build: ./book_market
+    volumes:
+      - ./book_market:/usr/src/app/
+    entrypoint: celery -A core beat -l info
+    env_file:
+      - ./book_market/env.dev
+    depends_on:
+      - db
+      - redis
+    restart: on-failure

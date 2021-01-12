@@ -2,3 +2,4 @@ migrations
 __pycache__
 .idea
 pg_data
+book_market/celerybeat-schedule
