@@ -8,6 +8,8 @@ django = "*"
 djangorestframework = "*"
 django-filter = "*"
 psycopg2-binary = "*"
+celery = "*"
+redis = "*"
 
 [dev-packages]
 
