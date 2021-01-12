@@ -1,5 +1,10 @@
 from django.db import models
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+from apps.notification.tasks import book_addition_notification
+
 
 class Author(models.Model):
     """Represent author instance"""
@@ -63,3 +68,11 @@ class Book(models.Model):
         """Return a string representation of the book's model"""
 
         return self.title
+
+
+@receiver(post_save, sender=Book)
+def send_book_notification(sender, instance, created, **kwargs):
+    """If new book was created, function send notification to users by email"""
+
+    if created:
+        book_addition_notification.delay(title=instance.title)
