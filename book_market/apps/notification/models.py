@@ -10,6 +10,6 @@ class BookAddedNotification(models.Model):
     email = models.EmailField(unique=True)
 
     def __str__(self):
-        """Return string representation about notification"""
+        """Return string representation about user's notification"""
 
         return self.email

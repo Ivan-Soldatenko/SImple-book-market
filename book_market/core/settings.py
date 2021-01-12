@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # My apps
     "apps.books",
     "apps.registration",
+    "apps.notification",
 ]
 
 REST_FRAMEWORK = {
