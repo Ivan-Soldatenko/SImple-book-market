@@ -4,6 +4,8 @@ from apps.notification import views
 
 
 router = DefaultRouter()
-router.register("addition_book", views.NotificationAdditionBookViewSet, basename="addition_book")
+router.register(
+    "addition_book", views.NotificationAdditionBookViewSet, basename="addition_book"
+)
 
 urlpatterns = router.urls

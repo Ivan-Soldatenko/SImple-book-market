@@ -9,7 +9,7 @@ class NotificationAdditionBookViewSet(viewsets.GenericViewSet):
     """View for register notification for users"""
 
     serializer_class = BookAddedNotificationSerializer
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated,)
 
     def list(self, request, *args, **kwargs):
         """Function returns information about view"""
@@ -20,11 +20,15 @@ class NotificationAdditionBookViewSet(viewsets.GenericViewSet):
     def create(self, request, *args, **kwargs):
         """Function confirm user's notification"""
 
-        serializer = self.get_serializer(data={"email": request.user.email})
+        serializer = self.get_serializer(
+            data={"email": request.user.email, "username": request.user.username}
+        )
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
 
-        data = {"information": "You have successfully followed to book's addition mail notification"}
+        data = {
+            "information": "You have successfully followed to book's addition mail notification"
+        }
         return Response(data=data, status=status.HTTP_201_CREATED)
 
     def perform_create(self, serializer):

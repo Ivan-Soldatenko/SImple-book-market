@@ -7,4 +7,4 @@ class BookAddedNotificationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = BookAddedNotification
-        fields = ("email",)
+        fields = ("username", "email")
